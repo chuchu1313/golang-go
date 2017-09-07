@@ -1,9 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"os"
-	"bytes"
 	"strings"
 )
 
@@ -20,16 +20,16 @@ func comma(s string) string {
 	count := 0
 	for i := 0; i < n; i++ {
 		fmt.Println(count, string(s[i]))
-		if (string(s[i]) == ".") {
+		if string(s[i]) == "." {
 			fmt.Fprintf(&buf, "%s", string(s[i]))
 			count = 0
 			preNum = 0
 			continue
-		} else if (i == preNum && preNum != 0) || ((count-preNum) % 3 == 0  && count != n-1 && count != 0) {
+		} else if (i == preNum && preNum != 0) || ((count-preNum)%3 == 0 && count != n-1 && count != 0) {
 			buf.WriteString(",")
 		}
 		count++
 		fmt.Fprintf(&buf, "%s", string(s[i]))
 	}
-	return buf.String() 
+	return buf.String()
 }
